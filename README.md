@@ -1,7 +1,7 @@
-Cloud-Orchestration-Layer
+Virtualization Orchestration Layer
 =========================
 
-A Cloud Orchestration Layer: Creating/Deleting/Quering and Scheduling Virtual Machines(VMs) in a given Network and also attach Storage Block Devices to the VMs on demand
+A Virtualization Orchestration Layer: Creating/Deleting/Quering and Scheduling Virtual Machines(VMs) in a given Network.
 
 How does it work?
 
@@ -11,7 +11,7 @@ And also the Location of the VM image file in file name: Images
 
 cd bin
 
-./script machines Images
+./script ../src/machines ../src/Images
 
 
 Now, by curl calls or REST calls, you can create/delete/query a VM, and also attach Storage Block devies to it by:
@@ -19,52 +19,41 @@ Now, by curl calls or REST calls, you can create/delete/query a VM, and also att
 Creating a VM:
 </h3>
 
--> http://localhost:3000/vm/create?name=test_vm&instance_type=type
+-> curl -i http://localhost:5000/vm/create?name=test\&instance_type=1\&image_id=1
 
 <h3>
 Quering a VM:
 </h3>
 
--> http://localhost:3000/vm/query?vmid=vmid
+-> curl -i http://localhost:5000/vm/query?vmid=1
 
 <h3>
 Destroy a VM:
 </h3>
 
--> http://localhost:3000/vm/destroy?vmid=vmid
+-> curl -i http://localhost:5000/vm/destroy?vmid=1
 
 <h3>
 List VM types:
 </h3>
 
--> http://localhost:3000/vm/types
+-> curl -i http://localhost:5000/vm/types
 
 <h3>
-Create a Volume Block Storage:
+List Images:
 </h3>
 
--> http://localhost:3000/volume/create?name=test­volume&size=10
+-> curl -i http://localhost:5000/image/list
 
 <h3>
-Query a Volume Block Storage:
+List PMs:
 </h3>
 
--> http://localhost:3000/volume/query?volumeid=volumeid
+-> curl -i http://localhost:5000/pm/list
 
 <h3>
-Destroy a Volume Block Storage:
+PM Query:
 </h3>
 
--> http://localhost:3000/volume/destroy?volumeid=volumeid
-
-<h3>
-Attach a Block Storage Device:
-</h3>
--> http://localhost:3000/volume/attach?vmid=vmid&volumeid=volumeid
-
-<h3>
-Detach a Block Storage Device:
-</h3>
-
--> http://localhost:3000/volume/detach?volumeid=volumeid
+->curl -i http://localhost:5000/pm/pmid
 
